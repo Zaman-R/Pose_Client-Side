@@ -1,8 +1,6 @@
 const Banner = () => {
   return (
-    <div className="mt-5 mb-5" data-aos="zoom-in"
-     data-aos-easing="ease-out-cubic"
-     data-aos-duration="2000">
+    <div className="mt-5 mb-5" >
       <section className="px-3 py-5 bg-neutral-100 lg:py-10">
         <div className="grid lg:grid-cols-2 items-center justify-items-center gap-5">
           <div className="order-2 lg:order-1 flex flex-col justify-center items-center">

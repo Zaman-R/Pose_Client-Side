@@ -1,7 +1,9 @@
 
 const Brands = () => {
     return (
-        <div className="px-5">
+        <div className="px-5 " data-aos="zoom-in"
+     data-aos-easing="ease-out-cubic"
+     data-aos-duration="1800">
   <div className="container py-16 mx-auto">
         <h2 className="text-2xl font-medium text-gray-800 uppercase mb-6">Brands by category</h2>
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-3">
