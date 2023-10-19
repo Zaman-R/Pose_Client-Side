@@ -11,7 +11,7 @@ const Brands = () => {
                     className="absolute inset-0 bg-black bg-opacity-40 flex items-center justify-center text-xl text-white font-roboto font-medium group-hover:bg-opacity-60 transition">Gucci</a>
             </div>
             <div className="relative rounded-sm overflow-hidden group">
-                <img src="https://i.ibb.co/B6thk9s/maxim-hopman-8c-T5ja0-P-N4-unsplash.jpg" alt="category 1" className="w-full h-full"/>
+                <img src="https://i.ibb.co/SPD08mz/leon-skibitzki-m-HUk4-Se7pe-Y-unsplash.jpg" alt="category 1" className="w-full h-full"/>
                 <a href="#"
                     className="absolute inset-0 bg-black bg-opacity-40 flex items-center justify-center text-xl text-white font-roboto font-medium group-hover:bg-opacity-60 transition">Adidas</a>
             </div>
@@ -22,12 +22,12 @@ const Brands = () => {
                 </a>
             </div>
             <div className="relative rounded-sm overflow-hidden group">
-                <img  src="https://i.ibb.co/SPD08mz/leon-skibitzki-m-HUk4-Se7pe-Y-unsplash.jpg" alt="category 1" className="w-full h-full"/>
+                <img  src="https://i.ibb.co/0cr4f6h/dmitry-spravko-2cm-LR-I-hn0-unsplash.jpg" alt="dmitry-spravko-2cm-LR-I-hn0-unsplash"  className="w-full h-full"/>
                 <a href="#"
-                    className=" absolute inset-0 bg-black bg-opacity-40 flex items-center justify-center text-xl text-white font-roboto font-medium group-hover:bg-opacity-60 transition">Nike</a>
+                    className=" absolute inset-0 bg-black bg-opacity-40 flex items-center justify-center text-xl text-white font-roboto font-medium group-hover:bg-opacity-60 transition">H&M</a>
             </div>
             <div className="relative rounded-sm overflow-hidden group">
-                <img src="https://i.ibb.co/PQFBwrx/reza-delkhosh-i-RAOJYt-PHZE-unsplash.jpg" alt="category 1" className="w-full h-full"/>
+                <img src="https://i.ibb.co/ThMQfMh/dom-hill-nim-El-Tc-TNy-Y-unsplash-1.jpg" alt="category 1" className="w-full h-full"/>
                 <a href="#"
                     className="absolute inset-0 bg-black bg-opacity-40 flex items-center justify-center text-xl text-white font-roboto font-medium group-hover:bg-opacity-60 transition">Lui Vuitton</a>
             </div>

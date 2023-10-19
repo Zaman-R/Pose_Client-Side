@@ -60,7 +60,7 @@ const Navbar = () => {
               {navlinks}
             </ul>
           </div>
-          <a className="font-bold text-xl md:text-4xl">Enigma Era</a>
+          <a className="font-bold text-xl md:text-4xl">P o S e</a>
         </div>
 
         <div className="navbar-center hidden lg:flex">
