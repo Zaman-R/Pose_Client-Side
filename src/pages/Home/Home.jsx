@@ -1,5 +1,3 @@
-import { useLoaderData } from 'react-router-dom';
-import Footer from '../Shared/Footer';
 import Reviews from './Home Components/Reviews';
 import Banner from './Home Components/Banner';
 import Brands from './Home Components/Brands';
@@ -9,8 +7,6 @@ import Featured from './Home Components/Featured';
 const Home = () => {
      
 //   const x = useLoaderData();
-
-
     return (
         <div className=''>
         <Banner></Banner>
