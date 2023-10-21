@@ -7,11 +7,12 @@ const About = () => {
             We didn't reinvent the wheel
           </h2>
           <p className="mb-4">
-            We are strategists, designers and developers. Innovators and problem
-            solvers. Small enough to be simple and quick, but big enough to
-            deliver the scope you want at the pace you need. Small enough to be
-            simple and quick, but big enough to deliver the scope you want at
-            the pace you need.
+            We are trendsetters, designers, and artisans. Innovators and style
+            mavens. Compact enough to be agile and responsive, yet substantial
+            enough to deliver the fashion and footwear you desire at the speed
+            you require. Compact enough to be nimble and adaptable, but
+            substantial enough to bring you the latest trends at your desired
+            pace.
           </p>
           <p>
             We are strategists, designers and developers. Innovators and problem

@@ -10,6 +10,7 @@ import BrandInfo from '../pages/Home/BrandInfo';
 import AddProducts from '../pages/AddProducts';
 import AddToCart from '../pages/Home/BrandInfo/AddToCart';
 import UpdateProducts from '../pages/Home/BrandInfo/UpdateProducts';
+import ProductDetails from '../pages/Home/BrandInfo/ProductDetails';
 
 const routes = createBrowserRouter([
     {
@@ -46,15 +47,20 @@ const routes = createBrowserRouter([
             },
             {
                 path: '/updateProduct/:id',
-                element: <UpdateProducts></UpdateProducts>,
+                element: <PrivateRoute><UpdateProducts></UpdateProducts></PrivateRoute>,
             },
             {
                 path: '/addproducts',
                 element: <PrivateRoute><AddProducts></AddProducts></PrivateRoute>
             },
             {
-                path: '/addtocart',
+                path: '/users',
                 element: <PrivateRoute><AddToCart></AddToCart></PrivateRoute>,
+            }
+            ,
+            {
+                path: "/details/:id",
+                element: <PrivateRoute><ProductDetails></ProductDetails></PrivateRoute>,
             }
         ]
 

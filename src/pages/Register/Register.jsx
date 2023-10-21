@@ -32,13 +32,37 @@ const Register = () => {
       toast.error(passwordError);
     } else {
       // Create the user if password validation passes
+      // 
       createUser(email, password)
         .then((res) => {
           // Registration successful
-          toast.success("Registration successful. Redirecting to login...");
+          toast.success("Registration successful....");
+
+          // post userdata to server at /user
+          // also send an empty array to the server
+
+          const userData = {
+            name: name,
+            photo: photo,
+            email: email,
+            password: password,
+            cart: [],
+          };
+          fetch("http://localhost:5000/user", {
+            method: "POST",
+            headers: {
+              "Content-Type": "application/json",
+            },
+            body: JSON.stringify(userData),
+          })
+
+
+
+
           setTimeout(() => {
             window.location.href = "/login"; // Redirect to login page
           }, 1000);
+          
         })
         .catch((err) => {
           // Registration unsuccessful, display the error message
@@ -46,6 +70,7 @@ const Register = () => {
         });
     }
   };
+
 
 
 

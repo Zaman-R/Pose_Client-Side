@@ -1,3 +1,4 @@
+import { useState } from 'react';
 import { Link, useLocation, useNavigate } from "react-router-dom";
 import Navbar from "../Shared/Navbar";
 import toast, { Toaster } from "react-hot-toast";
@@ -14,6 +15,9 @@ const Login = () => {
   const provider = new GoogleAuthProvider();
 
   const auth = getAuth(app);
+
+  const [cart, setCart] = useState([]); // Initialize cart as an empty array
+
   const handleGoogleSignIn = () => {
     signInWithPopup(auth, provider)
       .then((result) => {
@@ -31,17 +35,20 @@ const Login = () => {
 
     const email = form.get("email");
     const password = form.get("password");
-    // console.log(email, password);
 
     signIn(email, password)
       .then((result) => {
         toast.success("Successfully logged in");
 
+        
         // navigate after login
         navigate(location?.state ? location.state : "/");
       })
-      .catch((error) => toast.error("Email or Password didn't matched"));
+      .catch((error) => toast.error("Email or Password didn't match"));
   };
+
+  // Function to add a product to the cart
+
 
   return (
     <div className="min-h-[60vh]">
@@ -93,12 +100,10 @@ const Login = () => {
         </p>
       </div>
       <div>
-
-
         <div className="text-center mt-5">
           <button
             type="button"
-            className=" text-white bg-black hover:bg-[#4285F4]/90 focus:ring-4 focus:outline-none focus:ring-[#4285F4]/50 font-medium rounded-lg text-sm px-5 py-2.5 text-center inline-flex items-center dark:focus:ring-[#4285F4]/55 mr-2 mb-2"
+            className="text-white bg-black hover:bg-[#4285F4]/90 focus:ring-4 focus:outline-none focus:ring-[#4285F4]/50 font-medium rounded-lg text-sm px-5 py-2.5 text-center inline-flex items-center dark:focus:ring-[#4285F4]/55 mr-2 mb-2"
             onClick={handleGoogleSignIn}
           >
             <svg
@@ -114,6 +119,7 @@ const Login = () => {
           </button>
         </div>
       </div>
+      
     </div>
   );
 };

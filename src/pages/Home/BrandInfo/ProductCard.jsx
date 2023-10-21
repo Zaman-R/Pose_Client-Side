@@ -7,14 +7,70 @@ import {
   faTrash,
   faShoppingCart,
 } from "@fortawesome/free-solid-svg-icons";
+import { useContext, useEffect, useState } from "react";
+import { AuthContext } from "../../../provider/AuthProvider";
 
-const ProductCard = ({ product, onDelete, onAddToCart }) => {
+const ProductCard = ({ product, onDelete }) => {
+  const { user } = useContext(AuthContext);
   const { _id, Name, Price, image } = product;
 
-  console.log(_id);
+  // fetch and Get user information from server http://localhost:5000/user
+  const [createUser, setUser] = useState([]);
+  const [loading, setLoading] = useState(true);
+  useEffect(() => {
+    fetch("http://localhost:5000/user")
+    .then((response) => response.json())
+    .then((data) => {
+        setUser(data);
+        setLoading(false);
+        
+      })
+    .catch((error) => {
+        console.error("Error fetching data:", error);
+        setLoading(false);
+      });
+  }, []);
 
-  const handleAddToCart = () => {
-    onAddToCart(product); // Call the onAddToCart prop with the product
+
+  const email = user.email;
+  // filter out from createUser by email address
+  const filteredUser = createUser.filter((user) => user.email === email);
+  
+  const fuser = filteredUser[0]; 
+  
+
+
+
+
+
+
+
+  const handleAddToCart = (id) => {
+    console.log(id);
+    // add id to the array of user
+    const addToCart = [...fuser.cart];
+    addToCart.push(id);
+    console.log(fuser.cart);
+    // update cart of user in server 
+    fetch(`http://localhost:5000/user/${email}`, {
+      method: "PUT",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({
+        cart: addToCart,
+      }),
+    })
+    .then((response) => response.json())
+    .then((data) => {
+        console.log(data);
+      })
+    .catch((error) => {
+        console.error("Error fetching data:", error);
+      });
+   
+
+
   };
 
   const handleDelete = () => {
@@ -57,13 +113,14 @@ const ProductCard = ({ product, onDelete, onAddToCart }) => {
               <Link to={`/updateProduct/${_id}`} className="btn mb-2 md:mb-2 md:mr-2">
                 <FontAwesomeIcon icon={faEdit} />
               </Link>
+
               <button onClick={handleDelete} className="btn bg-stone-400 mb-2 md:mb-2 md:mr-2">
                 <FontAwesomeIcon icon={faTrash} />
               </button>
-              <a href="#" className="btn mb-2 md:mb-2 md:mr-2">
+              <Link to={`/details/${_id}`} className="btn mb-2 md:mb-2 md:mr-2">
                 <FontAwesomeIcon icon={faEye} />
-              </a>
-              <button onClick={handleAddToCart} className="btn bg-stone-400 mb-2 md:mb-2 md:mr-2">
+              </Link>
+              <button onClick={()=>handleAddToCart(product._id)}  className="btn bg-stone-400 mb-2 md:mb-2 md:mr-2">
                 <FontAwesomeIcon icon={faShoppingCart} />
               </button>
             </div>
