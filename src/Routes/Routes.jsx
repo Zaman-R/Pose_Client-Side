@@ -6,7 +6,7 @@ import Register from "../pages/Register/Register";
 import PrivateRoute from './PrivateRoutes';
 import Error from '../pages/Error'
 import About from '../pages/Shared/About';
-import BrandInfo from '../pages/Home/BrandInfo/BrandInfo';
+import BrandInfo from '../pages/Home/BrandInfo';
 import AddProducts from '../pages/AddProducts';
 import AddToCart from '../pages/Home/BrandInfo/AddToCart';
 import UpdateProducts from '../pages/Home/BrandInfo/UpdateProducts';
@@ -47,12 +47,15 @@ const routes = createBrowserRouter([
             {
                 path: '/updateProduct/:id',
                 element: <UpdateProducts></UpdateProducts>,
-                loader: ({ params }) => fetch(`http://localhost:5000/products/${params.id}`)
             },
             {
                 path: '/addproducts',
                 element: <PrivateRoute><AddProducts></AddProducts></PrivateRoute>
             },
+            {
+                path: '/addtocart',
+                element: <PrivateRoute><AddToCart></AddToCart></PrivateRoute>,
+            }
         ]
 
     }
