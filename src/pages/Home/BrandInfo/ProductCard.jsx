@@ -1,81 +1,93 @@
-import React from "react";
+import Swal from "sweetalert2";
 import { Link } from "react-router-dom";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import {
-  faStar,
-  faStarHalf,
+  faEye,
   faEdit,
   faTrash,
-  faEye,
+  faShoppingCart,
 } from "@fortawesome/free-solid-svg-icons";
 
 const ProductCard = ({ product }) => {
-  // Function to generate star icons based on the rating
-  const renderRatingStars = (rating) => {
-    const stars = [];
-    const fullStars = Math.floor(rating);
-    const hasHalfStar = rating % 1 !== 0;
+  const { _id, Name, Price, image } = product;
 
-    for (let i = 0; i < fullStars; i++) {
-      stars.push(<FontAwesomeIcon key={i} icon={faStar} />);
+  const handleDelete = _id => {
+        console.log(_id);
+        Swal.fire({
+            title: 'Are you sure?',
+            text: "You won't be able to revert this!",
+            icon: 'warning',
+            showCancelButton: true,
+            confirmButtonColor: '#3085d6',
+            cancelButtonColor: '#d33',
+            confirmButtonText: 'Yes, delete it!'
+        }).then((result) => {
+            if (result.isConfirmed) {
+
+
+                fetch(`http://localhost:5000/products/${_id}`, {
+                    method: 'DELETE'
+                })
+                    .then(res => res.json())
+                    .then(data => {
+                        console.log(data);
+                        if (data.deletedCount > 0) {
+                            Swal.fire(
+                                'Deleted!',
+                                'Your Product has been deleted.',
+                                'success'
+                            )
+                        }
+                    })
+
+            }
+        })
     }
-
-    if (hasHalfStar) {
-      stars.push(<FontAwesomeIcon key="half" icon={faStarHalf} />);
-    }
-
-    return stars;
-  };
 
   return (
-    <div className="overflow-hidden shadow-2xl border-2 border-slate-100 md:w-80 mx-auto">
-      <img className="w-full" src={product.image} alt={product.Name} />
-      {/* Badge Section */}
-      <div className="flex items-center justify-center gap-2 mt-2 mb-4">
-        <span className="bg-gray-400 px-2 py-1 rounded-full text-black font-bold">
-          stock ready
-        </span>
-        <span className="bg-gray-400 px-2 py-1 rounded-full text-black font-bold">
-          official store
-        </span>
-      </div>
-      {/* Product Title & Price Section */}
-      <div className="p-4">
-        <h2 className="text-3xl font-bold text-center mb-4">{product.Name}</h2>
-        <h3 className="text-2xl font-bold text-center mb-2">
-          Price: ${product.Price}
-        </h3>
+    <div className="flex">
+<div>
+    <div className="flex items-center bg-white border border-gray-200 rounded-lg shadow mb-4 dark:bg-gray-800">
+      <img
+        className="object-cover w-48 h-48 md:w-48 md:h-auto rounded-t-lg md:rounded-none md:rounded-l-lg"
+        src={image}
+        alt={Name}
+      />
+      <div className="p-4 flex-grow">
+        <h5 className="mb-2 text-2xl font-bold tracking-tight text-gray-900 dark:text-white">
+          {Name}
+        </h5>
+        <p className="mb-3 font-normal text-gray-700 dark:text-gray-400">
+          Price: ${Price}
+        </p>
 
-      </div>
-      {/* Rating Section */}
-      <div className="flex gap-2 mb-4 p-4 items-center justify-center">
-        <div className="text-yellow-500 text-base">
-          {renderRatingStars(product.Rating)}
-        </div>
-        <div className="text-yellow-500 text-base font-bold">
-          {product.Rating} <span className="text-gray-500">(Review)</span>
-        </div>
-      </div>
-      {/* Add To Cart Section */}
-      <div className="flex gap-3 items-center p-4 justify-center">
-        {/* Cart Button */}
-        <div>
-          <button className="font-bold bg-orange-400 px-4 py-2 rounded-lg text-white">
-            Add to cart
+
+
+</div>
+<div>
+        <div className="flex flex-col md:flex-col md:items-center md:justify-end">
+          <Link to={`/updateProduct/${_id}`} className="btn mb-2 md:mb-2 md:mr-2">
+            <FontAwesomeIcon icon={faEdit} />
+          </Link>
+          <button
+            onClick={() => handleDelete(_id)}
+            className="btn bg-stone-400 mb-2 md:mb-2 md:mr-2"
+          >
+            <FontAwesomeIcon icon={faTrash} />
           </button>
-        </div>
-        {/* Edit Icon */}
-        <div className="bg-gray-400 px-2 py-1 rounded-full">
-          <FontAwesomeIcon icon={faEdit} />
-        </div>
-        {/* Delete Icon */}
-        <div className="bg-gray-400 px-2 py-1 rounded-full">
-          <FontAwesomeIcon icon={faTrash} />
-        </div>
-        {/* Eye Icon */}
-        <div className="bg-gray-400 px-2 py-1 rounded-full">
-          <FontAwesomeIcon icon={faEye} />
-        </div>
+          <a href="#" className="btn mb-2 md:mb-2 md:mr-2">
+            <FontAwesomeIcon icon={faEye} />
+          </a>
+          <button className="btn bg-stone-400 mb-2 md:mb-2 md:mr-2">
+            <FontAwesomeIcon icon={faShoppingCart} />
+          </button>
+         </div>
+
+</div>
+
+</div>
+
+        
       </div>
     </div>
   );

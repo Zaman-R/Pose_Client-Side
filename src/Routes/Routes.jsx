@@ -9,6 +9,7 @@ import About from '../pages/Shared/About';
 import BrandInfo from '../pages/Home/BrandInfo/BrandInfo';
 import AddProducts from '../pages/AddProducts';
 import AddToCart from '../pages/Home/BrandInfo/AddToCart';
+import UpdateProducts from '../pages/Home/BrandInfo/UpdateProducts';
 
 const routes = createBrowserRouter([
     {
@@ -42,6 +43,11 @@ const routes = createBrowserRouter([
             {
                 path: '/about',
                 element: <About></About>
+            },
+            {
+                path: '/updateProduct/:id',
+                element: <UpdateProducts></UpdateProducts>,
+                loader: ({ params }) => fetch(`http://localhost:5000/products/${params.id}`)
             },
             {
                 path: '/addproducts',
