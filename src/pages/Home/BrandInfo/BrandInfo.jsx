@@ -1,58 +1,40 @@
 import { useEffect, useState } from "react";
-import { useParams } from "react-router-dom";
+import { useParams} from "react-router-dom";
+import ProductCard from "./ProductCard";
 
 const BrandInfo = () => {
-  // Get the brandName parameter from the URL
   const { brandName } = useParams();
-
-  // Sample data structure for brand information
-  const brands = [
-    {
-      name: "Gucci",
-      image: "https://i.ibb.co/1J53b36/max-anderson-gmx-Tz-ER0ih8-unsplash.jpg",
-    },
-    {
-      name: "Adidas",
-      image: "https://i.ibb.co/SPD08mz/leon-skibitzki-m-HUk4-Se7pe-Y-unsplash.jpg",
-    },
-    {
-      name: "Jordan",
-      image: "https://i.ibb.co/2qFTdH2/xavier-teo-Sx-AXph-IPWeg-unsplash.jpg",
-    },
-    {
-      name: "H&M",
-      image: "https://i.ibb.co/0cr4f6h/dmitry-spravko-2cm-LR-I-hn0-unsplash.jpg",
-    },
-    {
-      name: "Lui Vuitton",
-      image: "https://i.ibb.co/ThMQfMh/dom-hill-nim-El-Tc-TNy-Y-unsplash-1.jpg",
-    },
-    {
-      name: "Levis",
-      image: "https://i.ibb.co/SnG2gjy/atharva-tulsi-Gqv-Hcl2-IKVU-unsplash.jpg",
-    },
-  ];
-
-  // State to store the brand data
-  const [brandData, setBrandData] = useState(null);
+  const [products, setProducts] = useState([]);
+  const [loading, setLoading] = useState(true);
 
   useEffect(() => {
-    // Find the brand information based on the brandName
-    const brand = brands.find((brand) => brand.name === brandName);
-
-    if (brand) {
-      setBrandData(brand);
-    }
+    // Fetch all products
+    fetch("http://localhost:5000/products")
+      .then((response) => response.json())
+      .then((data) => {
+        // Filter products based on the brandName
+        const filteredProducts = data.filter((product) => product.Brand_Name === brandName);
+        setProducts(filteredProducts);
+        setLoading(false);
+      })
+      .catch((error) => {
+        console.error("Error fetching data:", error);
+        setLoading(false);
+      });
   }, [brandName]);
 
-  if (!brandData) {
+  if (loading) {
     return <div>Loading...</div>;
   }
 
   return (
     <div>
-      <h2>{brandData.name}</h2>
-      <p>{brandData.description}</p>
+      <h2>{brandName}</h2>
+      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-3">
+        {products.map((product, index) => (
+          <ProductCard key={index} product={product} />
+        ))}
+      </div>
     </div>
   );
 };

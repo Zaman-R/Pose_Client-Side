@@ -7,6 +7,7 @@ import PrivateRoute from './PrivateRoutes';
 import Error from '../pages/Error'
 import About from '../pages/Shared/About';
 import BrandInfo from '../pages/Home/BrandInfo/BrandInfo';
+import AddProducts from '../pages/AddProducts';
 
 const routes = createBrowserRouter([
     {
@@ -34,21 +35,17 @@ const routes = createBrowserRouter([
               </PrivateRoute>,
             },
             {
-                path: '/news/:id',
+                path: '/addcart/:id',
                 element: <PrivateRoute></PrivateRoute>,
-                loader: () => fetch('/data.json')
+                loader: () => fetch('http://localhost:5000/products')
             },
             {
                 path: '/about',
                 element: <About></About>
             },
             {
-                path: '/blogs',
-                element: <PrivateRoute></PrivateRoute>
-            },
-            {
-                path: '/books',
-                element: <PrivateRoute></PrivateRoute>
+                path: '/addproducts',
+                element: <PrivateRoute><AddProducts></AddProducts></PrivateRoute>
             },
         ]
 
