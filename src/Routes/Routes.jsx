@@ -8,6 +8,7 @@ import Error from '../pages/Error'
 import About from '../pages/Shared/About';
 import BrandInfo from '../pages/Home/BrandInfo/BrandInfo';
 import AddProducts from '../pages/AddProducts';
+import AddToCart from '../pages/Home/BrandInfo/AddToCart';
 
 const routes = createBrowserRouter([
     {
@@ -35,9 +36,8 @@ const routes = createBrowserRouter([
               </PrivateRoute>,
             },
             {
-                path: '/addcart/:id',
-                element: <PrivateRoute></PrivateRoute>,
-                loader: () => fetch('http://localhost:5000/products')
+                path: '/addtocart',
+                element: <PrivateRoute><AddToCart></AddToCart></PrivateRoute>,
             },
             {
                 path: '/about',

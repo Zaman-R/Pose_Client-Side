@@ -69,7 +69,7 @@ const Navbar = () => {
         <div className="navbar-end">
           {user ? (
             <>
-              <NavLink to="/">
+              <NavLink to="/addtocart">
                 <label tabIndex={0} className="btn btn-ghost btn-circle ">
                   <div className="indicator">
                     <svg

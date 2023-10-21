@@ -1,49 +1,80 @@
-
+import React from "react";
 import { Link } from "react-router-dom";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import {
+  faStar,
+  faStarHalf,
+  faEdit,
+  faTrash,
+  faEye,
+} from "@fortawesome/free-solid-svg-icons";
 
 const ProductCard = ({ product }) => {
+  // Function to generate star icons based on the rating
+  const renderRatingStars = (rating) => {
+    const stars = [];
+    const fullStars = Math.floor(rating);
+    const hasHalfStar = rating % 1 !== 0;
+
+    for (let i = 0; i < fullStars; i++) {
+      stars.push(<FontAwesomeIcon key={i} icon={faStar} />);
+    }
+
+    if (hasHalfStar) {
+      stars.push(<FontAwesomeIcon key="half" icon={faStarHalf} />);
+    }
+
+    return stars;
+  };
+
   return (
-    <div className="overflow-hidden shadow-2xl border-2 border-slate-100">
-      <img className="w-80" src={product.image} alt={product.Name} />
+    <div className="overflow-hidden shadow-2xl border-2 border-slate-100 md:w-80 mx-auto">
+      <img className="w-full" src={product.image} alt={product.Name} />
       {/* Badge Section */}
-      <div className="flex items-center justify-center gap-10 mt-2 mb-4">
-        <span className="bg-gray-400 px-3 py-1 rounded-full text-black font-bold mt-2">stock ready</span>
-        <span className="bg-gray-400 px-3 py-1 rounded-full text-black font-bold mt-2">official store</span>
+      <div className="flex items-center justify-center gap-2 mt-2 mb-4">
+        <span className="bg-gray-400 px-2 py-1 rounded-full text-black font-bold">
+          stock ready
+        </span>
+        <span className="bg-gray-400 px-2 py-1 rounded-full text-black font-bold">
+          official store
+        </span>
       </div>
       {/* Product Title & Price Section */}
       <div className="p-4">
-        <h2 className="text-3xl font-bold mb-4">{product.Name}</h2>
-        <h3 className="text-2xl font-bold mb-2">Price: ${product.Price}</h3>
-        {/* Discounted Price Section */}
-        <div className="flex gap-5 items-center">
-          <h4 className="text-gray-600 font-bold line-through text-base">Price: $185.00</h4>
-          <p className="bg-green-500 px-3 py-1 rounded-full font-bold text-white">save 20%</p>
-        </div>
+        <h2 className="text-3xl font-bold text-center mb-4">{product.Name}</h2>
+        <h3 className="text-2xl font-bold text-center mb-2">
+          Price: ${product.Price}
+        </h3>
+
       </div>
       {/* Rating Section */}
-      <div className="flex gap-6 mb-5 p-4">
+      <div className="flex gap-2 mb-4 p-4 items-center justify-center">
         <div className="text-yellow-500 text-base">
-          <i className="fa-solid fa-star"></i>
-          <i className="fa-solid fa-star"></i>
-          <i className="fa-solid fa-star"></i>
-          <i className="fa-regular fa-star-half-stroke"></i>
-          <i className="fa-regular fa-star"></i>
+          {renderRatingStars(product.Rating)}
         </div>
-        <h3 className="font-bold text-gray-500">20k reviews</h3>
+        <div className="text-yellow-500 text-base font-bold">
+          {product.Rating} <span className="text-gray-500">(Review)</span>
+        </div>
       </div>
       {/* Add To Cart Section */}
-      <div className="flex gap-3 items-center p-4">
+      <div className="flex gap-3 items-center p-4 justify-center">
         {/* Cart Button */}
         <div>
-          <button className="font-bold bg-orange-400 px-10 py-2 mr-3 rounded-lg text-white">Add to cart</button>
+          <button className="font-bold bg-orange-400 px-4 py-2 rounded-lg text-white">
+            Add to cart
+          </button>
         </div>
-        {/* Love Icon */}
+        {/* Edit Icon */}
         <div className="bg-gray-400 px-2 py-1 rounded-full">
-          <i className="fa-solid fa-heart"></i>
+          <FontAwesomeIcon icon={faEdit} />
+        </div>
+        {/* Delete Icon */}
+        <div className="bg-gray-400 px-2 py-1 rounded-full">
+          <FontAwesomeIcon icon={faTrash} />
         </div>
         {/* Eye Icon */}
         <div className="bg-gray-400 px-2 py-1 rounded-full">
-          <i className="fa-solid fa-eye"></i>
+          <FontAwesomeIcon icon={faEye} />
         </div>
       </div>
     </div>
