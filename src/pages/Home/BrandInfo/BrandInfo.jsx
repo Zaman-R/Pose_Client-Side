@@ -9,7 +9,7 @@ const BrandInfo = () => {
 
   useEffect(() => {
     // Fetch all products
-    fetch("http://localhost:5000/products")
+    fetch("https://server-side-na1cbme1c-zaman-r.vercel.app/products")
       .then((response) => response.json())
       .then((data) => {
         // Filter products based on the brandName

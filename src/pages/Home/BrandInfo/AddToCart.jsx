@@ -8,7 +8,7 @@ const AddToCart = () => {
 
   // Fetch user data
   useEffect(() => {
-    fetch("http://localhost:5000/user")
+    fetch("https://server-side-na1cbme1c-zaman-r.vercel.app/user")
       .then((response) => response.json())
       .then((data) => {
         setUser(data);
@@ -33,7 +33,7 @@ const AddToCart = () => {
 
   // Fetch product data
   useEffect(() => {
-    fetch("http://localhost:5000/products")
+    fetch("https://server-side-na1cbme1c-zaman-r.vercel.app/products")
       .then((response) => response.json())
       .then((data) => {
         setProducts(data);

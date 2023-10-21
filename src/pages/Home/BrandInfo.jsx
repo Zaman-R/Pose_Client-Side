@@ -10,7 +10,7 @@ const BrandInfo = () => {
 
   const fetchProducts = () => {
     // Fetch all products
-    fetch("http://localhost:5000/products")
+    fetch("https://server-side-na1cbme1c-zaman-r.vercel.app/products")
       .then((response) => response.json())
       .then((data) => {
         // Filter products based on the brandName
@@ -31,7 +31,7 @@ const BrandInfo = () => {
 
   const handleProductDelete = (productId) => {
     // Send a DELETE request to the server to delete the product
-    fetch(`http://localhost:5000/products/${productId}`, {
+    fetch(`https://server-side-na1cbme1c-zaman-r.vercel.app/products/${productId}`, {
       method: 'DELETE',
     })
       .then((res) => res.json())

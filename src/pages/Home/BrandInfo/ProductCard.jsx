@@ -14,11 +14,11 @@ const ProductCard = ({ product, onDelete }) => {
   const { user } = useContext(AuthContext);
   const { _id, Name, Price, image } = product;
 
-  // fetch and Get user information from server http://localhost:5000/user
+  // fetch and Get user information from server https://server-side-na1cbme1c-zaman-r.vercel.app/user
   const [createUser, setUser] = useState([]);
   const [loading, setLoading] = useState(true);
   useEffect(() => {
-    fetch("http://localhost:5000/user")
+    fetch("https://server-side-na1cbme1c-zaman-r.vercel.app/user")
     .then((response) => response.json())
     .then((data) => {
         setUser(data);
@@ -52,7 +52,7 @@ const ProductCard = ({ product, onDelete }) => {
     addToCart.push(id);
     console.log(fuser.cart);
     // update cart of user in server 
-    fetch(`http://localhost:5000/user/${email}`, {
+    fetch(`https://server-side-na1cbme1c-zaman-r.vercel.app/user/${email}`, {
       method: "PUT",
       headers: {
         "Content-Type": "application/json",

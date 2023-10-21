@@ -7,7 +7,7 @@ const ProductDetails = () => {
 
   useEffect(() => {
     // Fetch the product details based on the ID
-    fetch(`http://localhost:5000/products/${id}`)
+    fetch(`https://server-side-na1cbme1c-zaman-r.vercel.app/products/${id}`)
       .then((response) => response.json())
       .then((data) => {
         setProduct(data); // Update the product state with the fetched data

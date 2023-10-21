@@ -9,7 +9,7 @@ const UpdateProducts = () => {
 
   useEffect(() => {
     // Fetch the specific product based on the id
-    fetch(`http://localhost:5000/products/${id}`)
+    fetch(`https://server-side-na1cbme1c-zaman-r.vercel.app/products/${id}`)
       .then((response) => response.json())
       .then((data) => {
         setProduct(data);
@@ -36,7 +36,7 @@ const UpdateProducts = () => {
     };
 
     // Send a PUT request to update the product on the server
-    fetch(`http://localhost:5000/products/${id}`, {
+    fetch(`https://server-side-na1cbme1c-zaman-r.vercel.app/products/${id}`, {
       method: 'PUT',
       headers: {
         'Content-Type': 'application/json',
