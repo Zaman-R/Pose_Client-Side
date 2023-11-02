@@ -19,7 +19,7 @@ const AddProducts = () => {
      console.log(newProduct);
     // send data to the server
 
-    fetch('https://server-side-na1cbme1c-zaman-r.vercel.app/products',{
+    fetch('https://server-side-zeta-ochre.vercel.app/products',{
         method: 'POST',
         headers: {
             'Content-Type': 'application/json'

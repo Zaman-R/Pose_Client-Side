@@ -14,11 +14,11 @@ const ProductCard = ({ product, onDelete }) => {
   const { user } = useContext(AuthContext);
   const { _id, Name, Price, image } = product;
 
-  // fetch and Get user information from server https://server-side-na1cbme1c-zaman-r.vercel.app/user
+  // fetch and Get user information from server https://server-side-zeta-ochre.vercel.app/products/user
   const [createUser, setUser] = useState([]);
   const [loading, setLoading] = useState(true);
   useEffect(() => {
-    fetch("https://server-side-na1cbme1c-zaman-r.vercel.app/user")
+    fetch("https://server-side-zeta-ochre.vercel.app/user")
     .then((response) => response.json())
     .then((data) => {
         setUser(data);
@@ -52,23 +52,7 @@ const ProductCard = ({ product, onDelete }) => {
     addToCart.push(id);
     console.log(fuser.cart);
     // update cart of user in server 
-    fetch(`https://server-side-na1cbme1c-zaman-r.vercel.app/user/${email}`, {
-      method: "PUT",
-      headers: {
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify({
-        cart: addToCart,
-      }),
-    })
-    .then((response) => response.json())
-    .then((data) => {
-        console.log(data);
-      })
-    .catch((error) => {
-        console.error("Error fetching data:", error);
-      });
-   
+
 
 
   };
@@ -92,10 +76,10 @@ const ProductCard = ({ product, onDelete }) => {
 
   return (
     <div className="flex">
-      <div>
-        <div className="flex items-center bg-white border border-gray-200 rounded-lg shadow mb-4 dark:bg-gray-800">
+      <div className="w-full h-full">
+        <div className="flex  items-center h-full bg-white border border-gray-200 rounded-lg shadow mb-4 dark:bg-gray-800 ">
           <img
-            className="object-cover w-48 h-48 md:w-48 md:h-auto rounded-t-lg md:rounded-none md:rounded-l-lg"
+            className="object-cover w-48 h-full  md:w-48 md:h-full rounded-t-lg md:rounded-none md:rounded-l-lg"
             src={image}
             alt={Name}
           />

@@ -10,7 +10,7 @@ const BrandInfo = () => {
 
   const fetchProducts = () => {
     // Fetch all products
-    fetch("https://server-side-na1cbme1c-zaman-r.vercel.app/products")
+    fetch("https://server-side-zeta-ochre.vercel.app/products")
       .then((response) => response.json())
       .then((data) => {
         // Filter products based on the brandName
@@ -31,7 +31,7 @@ const BrandInfo = () => {
 
   const handleProductDelete = (productId) => {
     // Send a DELETE request to the server to delete the product
-    fetch(`https://server-side-na1cbme1c-zaman-r.vercel.app/products/${productId}`, {
+    fetch(`https://server-side-zeta-ochre.vercel.app/products/${productId}`, {
       method: 'DELETE',
     })
       .then((res) => res.json())
@@ -54,7 +54,6 @@ const BrandInfo = () => {
 
   return (
     <div>
-      <h2>{brandName}</h2>
       <div className="flex justify-center w-screen">
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-2 gap-4 mx-auto">
           {products.map((product, index) => (

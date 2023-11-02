@@ -52,10 +52,6 @@ const routes = createBrowserRouter([
             {
                 path: '/addproducts',
                 element: <PrivateRoute><AddProducts></AddProducts></PrivateRoute>
-            },
-            {
-                path: '/users',
-                element: <PrivateRoute><AddToCart></AddToCart></PrivateRoute>,
             }
             ,
             {

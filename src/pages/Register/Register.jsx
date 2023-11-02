@@ -48,7 +48,7 @@ const Register = () => {
             password: password,
             cart: [],
           };
-          fetch("https://server-side-na1cbme1c-zaman-r.vercel.app/user", {
+          fetch("https://server-side-zeta-ochre.vercel.app/user", {
             method: "POST",
             headers: {
               "Content-Type": "application/json",
